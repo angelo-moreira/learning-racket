@@ -26,9 +26,8 @@
           [#t (+ (y-thunk) (my-mult (- x 1) y-thunk))]))
 
 
+(my-mult 0 (let ([x (my-delay (lambda () (slow-add 3 4)))])
+             (lambda () (my-force x))))
 
-;;; (my-mult 0 (let ([x (my-delay (lambda () (slow-add 3 4)))])
-;;;              (lambda () (my-force x))))
-
-;;; (my-mult 7 (let ([x (my-delay (lambda () (slow-add 3 4)))])
-;;;              (lambda () (my-force x))))
+(my-mult 7 (let ([x (my-delay (lambda () (slow-add 3 4)))])
+             (lambda () (my-force x))))
