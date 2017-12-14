@@ -23,4 +23,3 @@
 (define (powers-of-two y)
     (letrec ([f (lambda(x) (cons x (lambda () (f (* x 2)))))])
         (lambda () (f y))))
-
