@@ -17,3 +17,12 @@
     (cond [(< n 0) (error "list-nth-mod: negative number")]
           [(empty? xs) (error "list-nth-mod: empty list")]
           [#t (car (list-tail xs (remainder n (length xs))))]))
+
+(define ones (lambda () (cons 1 ones)))
+
+(define (stream-for-n-steps s n)
+    (letrec ([f (lambda(s n)
+                (cond [(= n 1) (cons (car (s)) null)]
+                      [#t (cons (car (s)) (f s (- n 1)))]))])
+        (f s n)))
+
